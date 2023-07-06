@@ -1,0 +1,49 @@
+type Query{
+	getAll:[Manager]
+	getAllEmployeesByManagerId(managerId:Int):[Employee]
+	getByManagerId(managerId:Int):Manager
+	getManagerByEmployeeId(employeeId:Int):Manager
+}
+
+type Mutation{
+	saveManager(manager:ManagerInput):Manager
+	saveAllManagers(managers:[ManagerInput]):[Manager]
+	assignEmployeesToManager(managerId:Int,employees:[EmployeeInput]):Manager
+}
+
+type Manager{
+	managerId:Int
+	managerFirstName:String
+	managerLastName:String
+	salary:String
+	managerCode:String
+	phone:String
+	employees:[Employee]
+}
+
+type Employee{
+	employeeId:Int
+	employeeFirstName:String
+	employeeLastName:String
+	empCode:String
+	address:String
+	businessLine:String
+}
+input EmployeeInput{
+	employeeId:Int
+	employeeFirstName:String
+	employeeLastName:String
+	empCode:String
+	address:String
+	businessLine:String
+}
+
+
+input ManagerInput{
+	managerFirstName:String
+	managerLastName:String
+	salary:String
+	managerCode:String
+	phone:String
+	employees:[EmployeeInput]
+}
